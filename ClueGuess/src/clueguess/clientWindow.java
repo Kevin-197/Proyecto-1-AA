@@ -30,6 +30,11 @@ public class clientWindow extends javax.swing.JFrame {
         MainPanel2 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         gameBackground = new javax.swing.JLabel();
         MainPanel1 = new javax.swing.JPanel();
         numberVariables = new javax.swing.JTextField();
@@ -48,7 +53,26 @@ public class clientWindow extends javax.swing.JFrame {
         MainPanel2.setPreferredSize(new java.awt.Dimension(1500, 920));
         MainPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         MainPanel2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 790, 310));
-        MainPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 790, 310));
+
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new java.awt.GridLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sospechosos/mejoramigo.png"))); // NOI18N
+        jPanel1.add(jLabel2);
+
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3);
+
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4);
+
+        jLabel6.setText("jLabel6");
+        jPanel1.add(jLabel6);
+
+        jLabel5.setText("jLabel5");
+        jPanel1.add(jLabel5);
+
+        MainPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 790, 250));
 
         gameBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bg.png"))); // NOI18N
         MainPanel2.add(gameBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, -1));
@@ -144,6 +168,11 @@ public class clientWindow extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel2;
     private javax.swing.JLabel gameBackground;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel menuBackground;
