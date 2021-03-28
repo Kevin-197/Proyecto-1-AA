@@ -5,6 +5,8 @@
  */
 package clueguess;
 
+import java.util.Random;
+
 /**
  *
  * @author kevin
@@ -67,7 +69,34 @@ public class Combinacion {
     
     
     public Carta verificar(Combinacion propuesta){
-        return null;
+        Carta[] Incorrectas = new Carta[5];
+        int index = 0;
+        if(propuesta.Sospechoso != this.Sospechoso){
+            Incorrectas[index] = propuesta.Sospechoso;
+            index++;
+        }
+        if(propuesta.Arma != this.Arma){
+            Incorrectas[index] = propuesta.Arma;
+            index++;
+        }
+        if(propuesta.Motivo != this.Motivo){
+            Incorrectas[index] = propuesta.Motivo;
+            index++;
+        }
+        if(propuesta.Parte != this.Parte){
+            Incorrectas[index] = propuesta.Parte;
+            index++;
+        }
+        if(propuesta.Lugar != this.Lugar){
+            Incorrectas[index] = propuesta.Lugar;
+            index++;
+        }
+        if(index == 0){
+            return null;
+        }
+        else{
+            return Incorrectas[(new Random()).nextInt(index)];
+        }
     }
     
 }
