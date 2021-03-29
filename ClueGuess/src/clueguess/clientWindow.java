@@ -5,6 +5,8 @@
  */
 package clueguess;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author eidur
@@ -27,57 +29,43 @@ public class clientWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MainPanel2 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        gameBackground = new javax.swing.JLabel();
+        card_panel = new javax.swing.JPanel();
         MainPanel1 = new javax.swing.JPanel();
         numberVariables = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
         menuBackground = new javax.swing.JLabel();
+        MainPanel2 = new javax.swing.JPanel();
+        respuestaTogglle = new javax.swing.JLabel();
+        confidentialPanel = new javax.swing.JPanel();
+        solutionPanel = new javax.swing.JPanel();
+        bruteSuspect1 = new javax.swing.JLabel();
+        bruteWeapon1 = new javax.swing.JLabel();
+        bruteMotive1 = new javax.swing.JLabel();
+        bruteBody1 = new javax.swing.JLabel();
+        bruteRoom1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        backTGuessingPanel = new javax.swing.JPanel();
+        backTSuspect = new javax.swing.JLabel();
+        backTWeapon = new javax.swing.JLabel();
+        backTMotive = new javax.swing.JLabel();
+        backTBody = new javax.swing.JLabel();
+        backTRoom = new javax.swing.JLabel();
+        bruteGuessingPanel = new javax.swing.JPanel();
+        bruteSuspect = new javax.swing.JLabel();
+        bruteWeapon = new javax.swing.JLabel();
+        bruteMotive = new javax.swing.JLabel();
+        bruteBody = new javax.swing.JLabel();
+        bruteRoom = new javax.swing.JLabel();
+        gameBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 920));
         setMinimumSize(new java.awt.Dimension(1500, 920));
         setPreferredSize(new java.awt.Dimension(1500, 880));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        MainPanel2.setMaximumSize(new java.awt.Dimension(1500, 920));
-        MainPanel2.setMinimumSize(new java.awt.Dimension(1500, 920));
-        MainPanel2.setPreferredSize(new java.awt.Dimension(1500, 920));
-        MainPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        MainPanel2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 790, 310));
-
-        jPanel1.setOpaque(false);
-        jPanel1.setLayout(new java.awt.GridLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
-        jPanel1.add(jLabel2);
-
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3);
-
-        jLabel4.setText("jLabel4");
-        jPanel1.add(jLabel4);
-
-        jLabel6.setText("jLabel6");
-        jPanel1.add(jLabel6);
-
-        jLabel5.setText("jLabel5");
-        jPanel1.add(jLabel5);
-
-        MainPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 790, 250));
-
-        gameBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bg.png"))); // NOI18N
-        MainPanel2.add(gameBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, -1));
-
-        getContentPane().add(MainPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        card_panel.setLayout(new java.awt.CardLayout());
 
         MainPanel1.setMaximumSize(new java.awt.Dimension(1500, 920));
         MainPanel1.setMinimumSize(new java.awt.Dimension(1500, 920));
@@ -112,21 +100,131 @@ public class clientWindow extends javax.swing.JFrame {
         menuBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/title.png"))); // NOI18N
         MainPanel1.add(menuBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, -1));
 
-        getContentPane().add(MainPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        card_panel.add(MainPanel1, "title");
+
+        MainPanel2.setMaximumSize(new java.awt.Dimension(1500, 920));
+        MainPanel2.setMinimumSize(new java.awt.Dimension(1500, 920));
+        MainPanel2.setPreferredSize(new java.awt.Dimension(1500, 920));
+        MainPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        respuestaTogglle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/solution.png"))); // NOI18N
+        respuestaTogglle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                respuestaTogglleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                respuestaTogglleMouseExited(evt);
+            }
+        });
+        MainPanel2.add(respuestaTogglle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 10, 123, 80));
+
+        confidentialPanel.setBackground(new java.awt.Color(189, 150, 63));
+        confidentialPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(155, 107, 50)));
+        confidentialPanel.setForeground(new java.awt.Color(204, 153, 0));
+        confidentialPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        solutionPanel.setBackground(new java.awt.Color(0, 51, 0));
+        solutionPanel.setOpaque(false);
+        solutionPanel.setLayout(new java.awt.GridLayout(1, 0, 4, 5));
+
+        bruteSuspect1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(bruteSuspect1);
+
+        bruteWeapon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(bruteWeapon1);
+
+        bruteMotive1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(bruteMotive1);
+
+        bruteBody1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(bruteBody1);
+
+        bruteRoom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(bruteRoom1);
+
+        confidentialPanel.add(solutionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, 250));
+
+        jLabel2.setFont(new java.awt.Font("Cookie", 0, 48)); // NOI18N
+        jLabel2.setText("Solución Confidencial");
+        confidentialPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 340, 40));
+
+        confidentialPanel.setVisible(false);
+
+        MainPanel2.add(confidentialPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 980, 450));
+
+        backTGuessingPanel.setBackground(new java.awt.Color(0, 51, 0));
+        backTGuessingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 0), 3));
+        backTGuessingPanel.setLayout(new java.awt.GridLayout(1, 0, 4, 5));
+
+        backTSuspect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        backTGuessingPanel.add(backTSuspect);
+
+        backTWeapon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        backTGuessingPanel.add(backTWeapon);
+
+        backTMotive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        backTGuessingPanel.add(backTMotive);
+
+        backTBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        backTGuessingPanel.add(backTBody);
+
+        backTRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        backTGuessingPanel.add(backTRoom);
+
+        MainPanel2.add(backTGuessingPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, -1, 250));
+
+        bruteGuessingPanel.setBackground(new java.awt.Color(0, 51, 0));
+        bruteGuessingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 0), 3));
+        bruteGuessingPanel.setLayout(new java.awt.GridLayout(1, 0, 4, 5));
+
+        bruteSuspect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        bruteGuessingPanel.add(bruteSuspect);
+
+        bruteWeapon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        bruteGuessingPanel.add(bruteWeapon);
+
+        bruteMotive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        bruteGuessingPanel.add(bruteMotive);
+
+        bruteBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        bruteGuessingPanel.add(bruteBody);
+
+        bruteRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); // NOI18N
+        bruteGuessingPanel.add(bruteRoom);
+
+        MainPanel2.add(bruteGuessingPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, 250));
+
+        gameBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bg.png"))); // NOI18N
+        MainPanel2.add(gameBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, -1));
+
+        card_panel.add(MainPanel2, "algorithm");
+
+        getContentPane().add(card_panel, "card4");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-        this.MainPanel1.setVisible(false);
-        this.MainPanel2.setVisible(true);
+        CardLayout escenarios = (CardLayout)card_panel.getLayout();
+        escenarios.show(card_panel,"algorithm" );
         
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void numberVariablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberVariablesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numberVariablesActionPerformed
+
+    private void respuestaTogglleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respuestaTogglleMouseEntered
+        // TODO add your handling code here:
+        this.confidentialPanel.setVisible(true);
+        
+    }//GEN-LAST:event_respuestaTogglleMouseEntered
+
+    private void respuestaTogglleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respuestaTogglleMouseExited
+        // TODO add your handling code here:
+        this.confidentialPanel.setVisible(false);
+    }//GEN-LAST:event_respuestaTogglleMouseExited
 
     /**
      * @param args the command line arguments
@@ -159,6 +257,7 @@ public class clientWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new clientWindow().setVisible(true);
+                
             }
         });
     }
@@ -166,17 +265,32 @@ public class clientWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel1;
     private javax.swing.JPanel MainPanel2;
+    private javax.swing.JLabel backTBody;
+    private javax.swing.JPanel backTGuessingPanel;
+    private javax.swing.JLabel backTMotive;
+    private javax.swing.JLabel backTRoom;
+    private javax.swing.JLabel backTSuspect;
+    private javax.swing.JLabel backTWeapon;
+    private javax.swing.JLabel bruteBody;
+    private javax.swing.JLabel bruteBody1;
+    private javax.swing.JPanel bruteGuessingPanel;
+    private javax.swing.JLabel bruteMotive;
+    private javax.swing.JLabel bruteMotive1;
+    private javax.swing.JLabel bruteRoom;
+    private javax.swing.JLabel bruteRoom1;
+    private javax.swing.JLabel bruteSuspect;
+    private javax.swing.JLabel bruteSuspect1;
+    private javax.swing.JLabel bruteWeapon;
+    private javax.swing.JLabel bruteWeapon1;
+    private javax.swing.JPanel card_panel;
+    private javax.swing.JPanel confidentialPanel;
     private javax.swing.JLabel gameBackground;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel menuBackground;
     private javax.swing.JTextField numberVariables;
+    private javax.swing.JLabel respuestaTogglle;
+    private javax.swing.JPanel solutionPanel;
     private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
 }
