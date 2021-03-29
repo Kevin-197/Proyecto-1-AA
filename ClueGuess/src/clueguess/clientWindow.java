@@ -57,7 +57,7 @@ public class clientWindow extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.GridLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sospechosos/mejoramigo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
         jPanel1.add(jLabel2);
 
         jLabel3.setText("jLabel3");
