@@ -185,19 +185,19 @@ public class BackT extends Thread{
         if(i >= Restrictions.size())
             return true;
         int c = 0;
-        if(Restrictions.get(i).Sospechoso == propuesta.Sospechoso && c++ == 2){
+        if(Restrictions.get(i).Sospechoso == propuesta.Sospechoso && ++c == 2){
             return false;
         }
-        if(Restrictions.get(i).Arma == propuesta.Arma && c++ == 2){
+        if(Restrictions.get(i).Arma == propuesta.Arma && ++c == 2){
             return false;
         }
-        if(Restrictions.get(i).Motivo == propuesta.Motivo && c++ == 2){
+        if(Restrictions.get(i).Motivo == propuesta.Motivo && ++c == 2){
             return false;
         }
-        if(Restrictions.get(i).Parte == propuesta.Parte && c++ == 2){
+        if(Restrictions.get(i).Parte == propuesta.Parte && ++c == 2){
             return false;
         }
-        if(Restrictions.get(i).Lugar == propuesta.Lugar && c++ == 2){
+        if(Restrictions.get(i).Lugar == propuesta.Lugar && ++c == 2){
             return false;
         }
         
