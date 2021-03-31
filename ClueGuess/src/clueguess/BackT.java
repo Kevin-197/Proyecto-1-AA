@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author kevin
  */
-public class BackT {
+public class BackT extends Thread{
     public ArrayList<Carta> Sospechosos;
     public ArrayList<Carta> Armas;
     public ArrayList<Carta> Motivos;
@@ -19,15 +19,28 @@ public class BackT {
     public ArrayList<Carta> Lugares;
     int combinaciones [][][][][] = new int [7][8][6][6][9];
     public ArrayList<Carta> Descartadas = new ArrayList<Carta>();
+    private ArrayList<javax.swing.JLabel> Displays;
+    Combinacion propuesta;
+    Combinacion Solucion;
 
-    public BackT(ArrayList<Carta> Sospechosos, ArrayList<Carta> Armas, ArrayList<Carta> Motivos, ArrayList<Carta> PCuerpo, ArrayList<Carta> Lugares) {
+
+    public BackT(ArrayList<Carta> Sospechosos, ArrayList<Carta> Armas, ArrayList<Carta> Motivos, ArrayList<Carta> PCuerpo, ArrayList<Carta> Lugares, ArrayList<javax.swing.JLabel> Displays, Combinacion propuesta, Combinacion Solucion ) {
         this.Sospechosos = Sospechosos;
         this.Armas = Armas;
         this.Motivos = Motivos;
         this.PCuerpo = PCuerpo;
         this.Lugares = Lugares;
+        this.Displays = Displays;
+        this.propuesta = propuesta;
+        this.Solucion=Solucion;
     }
-    
+    @Override
+    public void run(){
+        
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+        this.excecute(this.propuesta, this.Solucion, 0,0,0,0,0);
+        interrupt();
+    }
     public boolean excecute(Combinacion propuesta, Combinacion Solucion, int i, int j, int k, int l, int m){
         
 //        System.out.println(i+" "+j+" "+k+" "+l+" "+m);
@@ -37,7 +50,7 @@ public class BackT {
             propuesta.setMotivo(Motivos.get(k));
             propuesta.setParte(PCuerpo.get(l));
             propuesta.setLugar(Lugares.get(m));
-            Carta incorrecta = Solucion.verificar(propuesta);
+            Carta incorrecta = Solucion.verificar(propuesta, this.Displays);
             if(incorrecta == null){
                 return true;
             }

@@ -6,19 +6,55 @@
 package clueguess;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
 
 /**
  *
  * @author eidur
  */
 public class clientWindow extends javax.swing.JFrame {
-
+    
+        ArrayList<Carta> Sospechosos = new ArrayList<Carta>();
+        ArrayList<Carta> Armas = new ArrayList<Carta>();
+        ArrayList<Carta> Motivos = new ArrayList<Carta>();
+        ArrayList<Carta> PCuerpo = new ArrayList<Carta>();
+        ArrayList<Carta> Lugares = new ArrayList<Carta>();
+        FBruta brute;
+        BackT backtrack;
+        Combinacion Solution;
+        Combinacion Propuesta;
+    
     /**
      * Creates new form clientWindow
      */
     public clientWindow() {
+        
+         Sospechosos.addAll(Arrays.asList(new Carta("Colega",TCartas.TipoCarta.SOSPECHOSO, "colega.png"),new Carta("Extraño",TCartas.TipoCarta.SOSPECHOSO, "extranio.png"),new Carta("Hermanastra",TCartas.TipoCarta.SOSPECHOSO, "hermanastra.png"),new Carta("Mejor Amigo",TCartas.TipoCarta.SOSPECHOSO, "mejoramigo.png"),new Carta("Mensajero",TCartas.TipoCarta.SOSPECHOSO, "mensajero.png"),new Carta("Novia",TCartas.TipoCarta.SOSPECHOSO, "hermanastra.png"),new Carta("Vecina",TCartas.TipoCarta.SOSPECHOSO, "vecina.png")));
+        Collections.shuffle(Sospechosos);
+         
+        Armas.addAll(Arrays.asList(new Carta("Bate",TCartas.TipoCarta.ARMA, "bate.png"),new Carta("Botella",TCartas.TipoCarta.ARMA, "botella.png"),new Carta("Cuchillo",TCartas.TipoCarta.ARMA, "cuchillo.png"),new Carta("Cuerda",TCartas.TipoCarta.ARMA, "cuerda.png"),new Carta("Machete",TCartas.TipoCarta.ARMA, "machete.png"),new Carta("Pala",TCartas.TipoCarta.ARMA, "pala.png"),new Carta("Pistola",TCartas.TipoCarta.ARMA, "pistola.png"),new Carta("Tubo",TCartas.TipoCarta.ARMA, "tubo.png")));
+        Collections.shuffle(Armas);
+        Motivos.addAll(Arrays.asList(new Carta("Accidente",TCartas.TipoCarta.MOTIVO, "accidente.png"),new Carta("Celos",TCartas.TipoCarta.MOTIVO, "celos.png"),new Carta("Dinero",TCartas.TipoCarta.MOTIVO, "dinero.png"),new Carta("Drogas",TCartas.TipoCarta.MOTIVO, "drogas.png"),new Carta("Venganza",TCartas.TipoCarta.MOTIVO, "venganza.png"),new Carta("Robo",TCartas.TipoCarta.MOTIVO, "robo.png")));
+        Collections.shuffle(Motivos);
+        PCuerpo.addAll(Arrays.asList(new Carta("Abdomen",TCartas.TipoCarta.CUERPO, "abdomen.png"),new Carta("Brazos",TCartas.TipoCarta.CUERPO, "brazos.png"),new Carta("Cabeza",TCartas.TipoCarta.CUERPO, "cabeza.png"),new Carta("Espalda",TCartas.TipoCarta.CUERPO, "espalda.png"),new Carta("Pecho",TCartas.TipoCarta.CUERPO, "pecho.png"),new Carta("Piernas",TCartas.TipoCarta.CUERPO, "piernas.png")));
+        Collections.shuffle(PCuerpo);
+        
+        Lugares.addAll(Arrays.asList(new Carta("Balcón",TCartas.TipoCarta.LUGAR, "balcon.png"),new Carta("Baño",TCartas.TipoCarta.LUGAR, "baño.png"),new Carta("Cocina",TCartas.TipoCarta.LUGAR, "cocina.png"),new Carta("Comedor",TCartas.TipoCarta.LUGAR, "comedor.png"),new Carta("Cuarto",TCartas.TipoCarta.LUGAR, "cuarto.png"),new Carta("Garaje",TCartas.TipoCarta.LUGAR, "garaje.png"),new Carta("Patio",TCartas.TipoCarta.LUGAR, "patio.png"),new Carta("Sala",TCartas.TipoCarta.LUGAR, "sala.png"),new Carta("Terraza",TCartas.TipoCarta.LUGAR, "terraza.png")));
+        Collections.shuffle(Lugares);
+        
+        
+        
+        
         initComponents();
+        
+        
+        
     }
+                                            
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,14 +72,16 @@ public class clientWindow extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         menuBackground = new javax.swing.JLabel();
         MainPanel2 = new javax.swing.JPanel();
+        goBrute = new javax.swing.JButton();
+        goBrute1 = new javax.swing.JButton();
         respuestaTogglle = new javax.swing.JLabel();
         confidentialPanel = new javax.swing.JPanel();
         solutionPanel = new javax.swing.JPanel();
-        bruteSuspect1 = new javax.swing.JLabel();
-        bruteWeapon1 = new javax.swing.JLabel();
-        bruteMotive1 = new javax.swing.JLabel();
-        bruteBody1 = new javax.swing.JLabel();
-        bruteRoom1 = new javax.swing.JLabel();
+        solutionSuspect = new javax.swing.JLabel();
+        solutionWeapon = new javax.swing.JLabel();
+        solutionMotive = new javax.swing.JLabel();
+        solutionBody = new javax.swing.JLabel();
+        solutionRoom = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         backTGuessingPanel = new javax.swing.JPanel();
         backTSuspect = new javax.swing.JLabel();
@@ -107,6 +145,32 @@ public class clientWindow extends javax.swing.JFrame {
         MainPanel2.setPreferredSize(new java.awt.Dimension(1500, 920));
         MainPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        goBrute.setText("go");
+        goBrute.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                goBruteMouseReleased(evt);
+            }
+        });
+        goBrute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBruteActionPerformed(evt);
+            }
+        });
+        MainPanel2.add(goBrute, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, -1));
+
+        goBrute1.setText("back");
+        goBrute1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                goBrute1MouseReleased(evt);
+            }
+        });
+        goBrute1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBrute1ActionPerformed(evt);
+            }
+        });
+        MainPanel2.add(goBrute1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
+
         respuestaTogglle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/solution.png"))); // NOI18N
         respuestaTogglle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -127,20 +191,20 @@ public class clientWindow extends javax.swing.JFrame {
         solutionPanel.setOpaque(false);
         solutionPanel.setLayout(new java.awt.GridLayout(1, 0, 4, 5));
 
-        bruteSuspect1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
-        solutionPanel.add(bruteSuspect1);
+        solutionSuspect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(solutionSuspect);
 
-        bruteWeapon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
-        solutionPanel.add(bruteWeapon1);
+        solutionWeapon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(solutionWeapon);
 
-        bruteMotive1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
-        solutionPanel.add(bruteMotive1);
+        solutionMotive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(solutionMotive);
 
-        bruteBody1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
-        solutionPanel.add(bruteBody1);
+        solutionBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(solutionBody);
 
-        bruteRoom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
-        solutionPanel.add(bruteRoom1);
+        solutionRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png"))); // NOI18N
+        solutionPanel.add(solutionRoom);
 
         confidentialPanel.add(solutionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, 250));
 
@@ -208,6 +272,19 @@ public class clientWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         CardLayout escenarios = (CardLayout)card_panel.getLayout();
         escenarios.show(card_panel,"algorithm" );
+        Random ran = new Random();
+        this.Solution = new Combinacion(Sospechosos.get(ran.nextInt(Sospechosos.size())),Armas.get(ran.nextInt(Armas.size())),Motivos.get(ran.nextInt(Motivos.size())), PCuerpo.get(ran.nextInt(PCuerpo.size())), Lugares.get(ran.nextInt(Lugares.size())));
+        SetSolution(Solution);
+        this.Propuesta = new Combinacion(Sospechosos.get(0),Armas.get(0),Motivos.get(0), PCuerpo.get(0), Lugares.get(0));
+        ArrayList<javax.swing.JLabel> BruteArray = new ArrayList<javax.swing.JLabel>();
+        BruteArray.addAll(Arrays.asList(this.bruteSuspect, this.bruteWeapon, this.bruteMotive, this.bruteBody, this.bruteRoom));
+        ArrayList<javax.swing.JLabel> BackTArray = new ArrayList<javax.swing.JLabel>();
+        BackTArray.addAll(Arrays.asList(this.backTSuspect, this.backTWeapon, this.backTMotive, this.backTBody, this.backTRoom));
+        
+        
+        this.brute = new FBruta(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BruteArray, this.Propuesta, this.Solution);
+        this.backtrack = new BackT(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BackTArray, this.Propuesta, this.Solution);
+
         
     }//GEN-LAST:event_startButtonActionPerformed
 
@@ -225,6 +302,27 @@ public class clientWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.confidentialPanel.setVisible(false);
     }//GEN-LAST:event_respuestaTogglleMouseExited
+
+    private void goBruteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBruteActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_goBruteActionPerformed
+
+    private void goBruteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBruteMouseReleased
+        // TODO add your handling code here:
+        
+        this.brute.start();
+        //this.BackTracking.excecute(this.Propuesta, this.Solution);
+    }//GEN-LAST:event_goBruteMouseReleased
+
+    private void goBrute1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBrute1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_goBrute1MouseReleased
+
+    private void goBrute1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBrute1ActionPerformed
+        // TODO add your handling code here:
+        this.backtrack.start();
+    }//GEN-LAST:event_goBrute1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,25 +370,42 @@ public class clientWindow extends javax.swing.JFrame {
     private javax.swing.JLabel backTSuspect;
     private javax.swing.JLabel backTWeapon;
     private javax.swing.JLabel bruteBody;
-    private javax.swing.JLabel bruteBody1;
     private javax.swing.JPanel bruteGuessingPanel;
     private javax.swing.JLabel bruteMotive;
-    private javax.swing.JLabel bruteMotive1;
     private javax.swing.JLabel bruteRoom;
-    private javax.swing.JLabel bruteRoom1;
     private javax.swing.JLabel bruteSuspect;
-    private javax.swing.JLabel bruteSuspect1;
     private javax.swing.JLabel bruteWeapon;
-    private javax.swing.JLabel bruteWeapon1;
     private javax.swing.JPanel card_panel;
     private javax.swing.JPanel confidentialPanel;
     private javax.swing.JLabel gameBackground;
+    private javax.swing.JButton goBrute;
+    private javax.swing.JButton goBrute1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel menuBackground;
     private javax.swing.JTextField numberVariables;
     private javax.swing.JLabel respuestaTogglle;
+    private javax.swing.JLabel solutionBody;
+    private javax.swing.JLabel solutionMotive;
     private javax.swing.JPanel solutionPanel;
+    private javax.swing.JLabel solutionRoom;
+    private javax.swing.JLabel solutionSuspect;
+    private javax.swing.JLabel solutionWeapon;
     private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
+
+private void SetSolution(Combinacion Solution) {                                                
+        // TODO add your handling code here:
+        //solutionBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png")));
+        System.out.println(Solution.Sospechoso.Url+" "+Solution.Arma.Url+" "+Solution.Parte.Url+Solution.Motivo.Url+Solution.Lugar.Url);
+        this.solutionSuspect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sospechosos/"+Solution.Sospechoso.Url)));
+        this.solutionWeapon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/"+Solution.Arma.Url)));
+        this.solutionBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cuerpo/"+Solution.Parte.Url)));
+        this.solutionMotive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Motivos/"+Solution.Motivo.Url)));
+        this.solutionRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Lugares/"+Solution.Lugar.Url)));
+        
+    }       
+
+
+
 }

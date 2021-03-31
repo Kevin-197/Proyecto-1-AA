@@ -11,23 +11,36 @@ import java.util.ArrayList;
  *
  * @author kevin
  */
-public class FBruta {
+public class FBruta extends Thread{
     public ArrayList<Carta> Sospechosos = new ArrayList<Carta>();
     public ArrayList<Carta> Armas = new ArrayList<Carta>();
     public ArrayList<Carta> Motivos = new ArrayList<Carta>();
     public ArrayList<Carta> PCuerpo = new ArrayList<Carta>();
     public ArrayList<Carta> Lugares = new ArrayList<Carta>();
+    private ArrayList<javax.swing.JLabel> Displays;
+    Combinacion propuesta;
+    Combinacion Solucion;
 
-    public FBruta(ArrayList<Carta> Sospechosos, ArrayList<Carta> Armas, ArrayList<Carta> Motivos, ArrayList<Carta> PCuerpo, ArrayList<Carta> Lugares) {
+    public FBruta(ArrayList<Carta> Sospechosos, ArrayList<Carta> Armas, ArrayList<Carta> Motivos, ArrayList<Carta> PCuerpo, ArrayList<Carta> Lugares, ArrayList<javax.swing.JLabel> Displays, Combinacion propuesta, Combinacion Solucion) {
         this.Sospechosos = Sospechosos;
         this.Armas = Armas;
         this.Motivos = Motivos;
         this.PCuerpo = PCuerpo;
         this.Lugares = Lugares;
+        this.Displays = Displays;
+        this.propuesta = propuesta;
+        this.Solucion=Solucion;
     }
     
-    public boolean excecute(Combinacion propuesta, Combinacion Solucion){
-        Carta incorrecta = Solucion.verificar(propuesta);
+    @Override
+    public void run(){
+
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+        this.excecute();
+        interrupt();
+    }
+    public boolean excecute(){
+        Carta incorrecta = Solucion.verificar(propuesta, this.Displays);
         for (int i = 0; i < Sospechosos.size() && incorrecta != null; i++) {
             propuesta.setSospechoso(Sospechosos.get(i));
             for (int j = 0; j < Armas.size() && incorrecta != null; j++) {
@@ -38,7 +51,7 @@ public class FBruta {
                         propuesta.setParte(PCuerpo.get(l));
                         for (int m = 0; m < Lugares.size(); m++) {
                             propuesta.setLugar(Lugares.get(m));
-                            incorrecta = Solucion.verificar(propuesta);
+                            incorrecta = Solucion.verificar(propuesta, this.Displays);
                             if(incorrecta == null){
                                 break;
                             }

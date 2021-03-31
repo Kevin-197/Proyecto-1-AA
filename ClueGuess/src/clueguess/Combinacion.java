@@ -5,6 +5,7 @@
  */
 package clueguess;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -68,7 +69,18 @@ public class Combinacion {
     
     
     
-    public Carta verificar(Combinacion propuesta){
+    public Carta verificar(Combinacion propuesta, ArrayList<javax.swing.JLabel> Panel){
+        Panel.get(0).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sospechosos/"+propuesta.Sospechoso.Url)));
+        Panel.get(1).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/"+propuesta.Arma.Url)));
+        Panel.get(2).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Motivos/"+propuesta.Motivo.Url)));
+        Panel.get(3).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cuerpo/"+propuesta.Parte.Url)));
+        Panel.get(4).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Lugares/"+propuesta.Lugar.Url)));
+        
+        
+        
+        System.out.println(propuesta.Sospechoso.Nombre+" "+propuesta.Arma.Nombre+" "+propuesta.Parte.Nombre+" "+propuesta.Motivo.Nombre+" "+propuesta.Lugar.Nombre);
+        
+        
         Carta[] Incorrectas = new Carta[5];
         int index = 0;
         if(propuesta.Sospechoso != this.Sospechoso){

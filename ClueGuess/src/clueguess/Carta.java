@@ -14,10 +14,12 @@ import clueguess.TCartas.TipoCarta;
 public class Carta {
     String Nombre;
     TipoCarta tipo;
+    String Url;
 
-    public Carta(String Nombre, TipoCarta tipo) {
+    public Carta(String Nombre, TipoCarta tipo, String url) {
         this.Nombre = Nombre;
         this.tipo = tipo;
+        this.Url = url;
     }
     
     
