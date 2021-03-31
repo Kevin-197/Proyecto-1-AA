@@ -312,6 +312,7 @@ public class clientWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         this.brute.start();
+        this.backtrack.start();
         //this.BackTracking.excecute(this.Propuesta, this.Solution);
     }//GEN-LAST:event_goBruteMouseReleased
 
@@ -321,7 +322,7 @@ public class clientWindow extends javax.swing.JFrame {
 
     private void goBrute1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBrute1ActionPerformed
         // TODO add your handling code here:
-        this.backtrack.start();
+        
     }//GEN-LAST:event_goBrute1ActionPerformed
 
     /**
