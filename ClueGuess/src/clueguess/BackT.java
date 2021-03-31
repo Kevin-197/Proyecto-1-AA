@@ -37,8 +37,14 @@ public class BackT extends Thread{
     @Override
     public void run(){
         
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+//        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+        long btS = System.currentTimeMillis();
         this.excecute(this.propuesta, this.Solucion, 0,0,0,0,0);
+        long btF = System.currentTimeMillis();
+        
+        System.out.println("BackTracking: ");
+        System.out.println("Tiempo: "+(btF - btS)+"\n");
+        
         interrupt();
     }
     public boolean excecute(Combinacion propuesta, Combinacion Solucion, int i, int j, int k, int l, int m){

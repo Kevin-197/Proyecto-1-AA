@@ -25,7 +25,8 @@ public class clientWindow extends javax.swing.JFrame {
         FBruta brute;
         BackT backtrack;
         Combinacion Solution;
-        Combinacion Propuesta;
+        Combinacion PropuestaFb;
+         Combinacion PropuestaBt;
     
     /**
      * Creates new form clientWindow
@@ -275,15 +276,16 @@ public class clientWindow extends javax.swing.JFrame {
         Random ran = new Random();
         this.Solution = new Combinacion(Sospechosos.get(ran.nextInt(Sospechosos.size())),Armas.get(ran.nextInt(Armas.size())),Motivos.get(ran.nextInt(Motivos.size())), PCuerpo.get(ran.nextInt(PCuerpo.size())), Lugares.get(ran.nextInt(Lugares.size())));
         SetSolution(Solution);
-        this.Propuesta = new Combinacion(Sospechosos.get(0),Armas.get(0),Motivos.get(0), PCuerpo.get(0), Lugares.get(0));
+        this.PropuestaFb = new Combinacion(Sospechosos.get(0),Armas.get(0),Motivos.get(0), PCuerpo.get(0), Lugares.get(0));
+        this.PropuestaBt = new Combinacion(Sospechosos.get(0),Armas.get(0),Motivos.get(0), PCuerpo.get(0), Lugares.get(0));
         ArrayList<javax.swing.JLabel> BruteArray = new ArrayList<javax.swing.JLabel>();
         BruteArray.addAll(Arrays.asList(this.bruteSuspect, this.bruteWeapon, this.bruteMotive, this.bruteBody, this.bruteRoom));
         ArrayList<javax.swing.JLabel> BackTArray = new ArrayList<javax.swing.JLabel>();
         BackTArray.addAll(Arrays.asList(this.backTSuspect, this.backTWeapon, this.backTMotive, this.backTBody, this.backTRoom));
         
         
-        this.brute = new FBruta(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BruteArray, this.Propuesta, this.Solution);
-        this.backtrack = new BackT(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BackTArray, this.Propuesta, this.Solution);
+        this.brute = new FBruta(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BruteArray, this.PropuestaFb, this.Solution);
+        this.backtrack = new BackT(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BackTArray, this.PropuestaBt, this.Solution);
 
         
     }//GEN-LAST:event_startButtonActionPerformed
@@ -295,7 +297,6 @@ public class clientWindow extends javax.swing.JFrame {
     private void respuestaTogglleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respuestaTogglleMouseEntered
         // TODO add your handling code here:
         this.confidentialPanel.setVisible(true);
-        
     }//GEN-LAST:event_respuestaTogglleMouseEntered
 
     private void respuestaTogglleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respuestaTogglleMouseExited
@@ -310,14 +311,16 @@ public class clientWindow extends javax.swing.JFrame {
 
     private void goBruteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBruteMouseReleased
         // TODO add your handling code here:
-        
         this.brute.start();
         this.backtrack.start();
+        
         //this.BackTracking.excecute(this.Propuesta, this.Solution);
     }//GEN-LAST:event_goBruteMouseReleased
 
     private void goBrute1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBrute1MouseReleased
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_goBrute1MouseReleased
 
     private void goBrute1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBrute1ActionPerformed
@@ -398,7 +401,7 @@ public class clientWindow extends javax.swing.JFrame {
 private void SetSolution(Combinacion Solution) {                                                
         // TODO add your handling code here:
         //solutionBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/botella.png")));
-        System.out.println(Solution.Sospechoso.Url+" "+Solution.Arma.Url+" "+Solution.Parte.Url+Solution.Motivo.Url+Solution.Lugar.Url);
+//        System.out.println(Solution.Sospechoso.Url+" "+Solution.Arma.Url+" "+Solution.Parte.Url+Solution.Motivo.Url+Solution.Lugar.Url);
         this.solutionSuspect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sospechosos/"+Solution.Sospechoso.Url)));
         this.solutionWeapon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Armas/"+Solution.Arma.Url)));
         this.solutionBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cuerpo/"+Solution.Parte.Url)));

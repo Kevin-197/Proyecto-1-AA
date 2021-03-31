@@ -78,7 +78,7 @@ public class Combinacion {
         
         
         
-        System.out.println(propuesta.Sospechoso.Nombre+" "+propuesta.Arma.Nombre+" "+propuesta.Parte.Nombre+" "+propuesta.Motivo.Nombre+" "+propuesta.Lugar.Nombre);
+//        System.out.println(propuesta.Sospechoso.Nombre+" "+propuesta.Arma.Nombre+" "+propuesta.Parte.Nombre+" "+propuesta.Motivo.Nombre+" "+propuesta.Lugar.Nombre);
         
         
         Carta[] Incorrectas = new Carta[5];

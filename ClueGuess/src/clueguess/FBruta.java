@@ -35,8 +35,13 @@ public class FBruta extends Thread{
     @Override
     public void run(){
 
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+//        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+        long fbS = System.currentTimeMillis();
         this.excecute();
+        long fbF = System.currentTimeMillis();
+        
+        System.out.println("Fuerza Bruta: ");
+        System.out.println("Tiempo: "+(fbF - fbS)+"\n");
         interrupt();
     }
     public boolean excecute(){
