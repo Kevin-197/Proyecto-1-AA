@@ -285,7 +285,7 @@ public class clientWindow extends javax.swing.JFrame {
         
         
         this.brute = new FBruta(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BruteArray, this.PropuestaFb, this.Solution);
-        this.backtrack = new BackT(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BackTArray, this.PropuestaBt, this.Solution);
+        this.backtrack = new BackT(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BackTArray, this.PropuestaBt, this.Solution, Integer. parseInt(this.numberVariables.getText()));
 
         
     }//GEN-LAST:event_startButtonActionPerformed
