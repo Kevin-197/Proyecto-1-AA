@@ -88,6 +88,7 @@ public class clientWindow extends javax.swing.JFrame {
         restrictionToggle1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         restrictionNum = new javax.swing.JLabel();
+        lblVolver = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -113,9 +114,7 @@ public class clientWindow extends javax.swing.JFrame {
         gameBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1500, 920));
         setMinimumSize(new java.awt.Dimension(1500, 920));
-        setPreferredSize(new java.awt.Dimension(1500, 880));
         getContentPane().setLayout(new java.awt.CardLayout());
 
         card_panel.setLayout(new java.awt.CardLayout());
@@ -230,6 +229,14 @@ public class clientWindow extends javax.swing.JFrame {
         restrictionNum.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         restrictionNum.setForeground(new java.awt.Color(240, 240, 240));
         MainPanel2.add(restrictionNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 600, -1, -1));
+
+        lblVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backRestriction.png"))); // NOI18N
+        lblVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVolverMouseClicked(evt);
+            }
+        });
+        MainPanel2.add(lblVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1380, 10, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(240, 240, 240));
@@ -391,9 +398,30 @@ public class clientWindow extends javax.swing.JFrame {
 
     private void runLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_runLabelMousePressed
         // TODO add your handling code here:
-        this.brute.start();
-        this.backtrack.start();
+        if(runLabel.isEnabled()){
+            this.brute.start();
+            this.backtrack.start();
+            runLabel.setEnabled(false);
+        }
     }//GEN-LAST:event_runLabelMousePressed
+
+    private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
+        CardLayout escenarios = (CardLayout)card_panel.getLayout();
+        runLabel.setEnabled(true);
+        escenarios.show(card_panel, "title");
+        this.runtimeBT.setText("");
+        this.runtimeFB.setText("");
+        backTSuspect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png")));
+        backTWeapon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png")));
+        backTMotive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png")));
+        backTBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); 
+        backTRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); 
+        bruteSuspect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); 
+        bruteWeapon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png")));
+        bruteMotive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png")));
+        bruteBody.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png"))); 
+        bruteRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/default_card.png")));
+    }//GEN-LAST:event_lblVolverMouseClicked
 
     /**
      * @param args the command line arguments
@@ -459,6 +487,7 @@ public class clientWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblVolver;
     private javax.swing.JLabel menuBackground;
     private javax.swing.JTextField numberVariables;
     private javax.swing.JLabel respuestaTogglle;

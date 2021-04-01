@@ -49,8 +49,8 @@ public class BackT extends Thread{
         long btF = System.currentTimeMillis();
         
         this.Displays.get(5).setText(" "+(btF - btS)+" milisegundos");
-        System.out.println("BackTracking con "+Restrictions.size()+" restricciones: ");
-        System.out.println("Tiempo: "+(btF - btS)+"\n");
+//        System.out.println("BackTracking con "+Restrictions.size()+" restricciones: ");
+//        System.out.println("Tiempo: "+(btF - btS)+"\n");
         
         interrupt();
     }
