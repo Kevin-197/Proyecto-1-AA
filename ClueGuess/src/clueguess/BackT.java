@@ -24,9 +24,10 @@ public class BackT extends Thread{
     Combinacion propuesta;
     Combinacion Solucion;
     ArrayList<Combinacion> Restrictions;
+    private javax.swing.JPanel restrictionPanel;
 
 
-    public BackT(ArrayList<Carta> Sospechosos, ArrayList<Carta> Armas, ArrayList<Carta> Motivos, ArrayList<Carta> PCuerpo, ArrayList<Carta> Lugares, ArrayList<javax.swing.JLabel> Displays, Combinacion propuesta, Combinacion Solucion, int Res ) {
+    public BackT(ArrayList<Carta> Sospechosos, ArrayList<Carta> Armas, ArrayList<Carta> Motivos, ArrayList<Carta> PCuerpo, ArrayList<Carta> Lugares, ArrayList<javax.swing.JLabel> Displays, Combinacion propuesta, Combinacion Solucion, int Res , javax.swing.JPanel panel) {
         this.Sospechosos = Sospechosos;
         this.Armas = Armas;
         this.Motivos = Motivos;
@@ -35,7 +36,9 @@ public class BackT extends Thread{
         this.Displays = Displays;
         this.propuesta = propuesta;
         this.Solucion=Solucion;
+        this.restrictionPanel = panel;
         this.Restrictions = this.generateRestrictions(Res, Solucion);
+        
     }
     @Override
     public void run(){
@@ -45,6 +48,7 @@ public class BackT extends Thread{
         this.excecute(this.propuesta, this.Solucion, 0,0,0,0,0, this.Restrictions);
         long btF = System.currentTimeMillis();
         
+        this.Displays.get(5).setText(" "+(btF - btS)+" milisegundos");
         System.out.println("BackTracking con "+Restrictions.size()+" restricciones: ");
         System.out.println("Tiempo: "+(btF - btS)+"\n");
         
@@ -97,7 +101,17 @@ public class BackT extends Thread{
     public ArrayList<Combinacion> generateRestrictions(int i, Combinacion solucion){
         Combinacion c;
         ArrayList<Combinacion> Restrictions = new ArrayList<Combinacion>();
+        javax.swing.JPanel individualPanel;
+        String Url1 ="";
+        String Url2="";
+        javax.swing.JLabel rest1;
+        javax.swing.JLabel rest2;
         while(i>0){
+            individualPanel = new javax.swing.JPanel();
+            
+            rest1 = new javax.swing.JLabel();
+            rest2 = new javax.swing.JLabel();
+            
             c = new Combinacion(null,null,null,null,null);
             int p = (new Random()).nextInt(5);
             int s = (new Random()).nextInt(5);
@@ -107,6 +121,7 @@ public class BackT extends Thread{
                 case 0:
                     P = Sospechosos.get((new Random()).nextInt(7));
                     if(solucion.Sospechoso != P){
+                        Url1="Sospechosos/";
                         c.Sospechoso = P;
                     }
                     else{
@@ -116,6 +131,7 @@ public class BackT extends Thread{
                 case 1:
                     P = Armas.get((new Random()).nextInt(8));
                     if(solucion.Arma != P){
+                        Url1="Armas/";
                         c.Arma = P;
                     }
                     else{
@@ -125,6 +141,7 @@ public class BackT extends Thread{
                 case 2:
                     P = Motivos.get((new Random()).nextInt(6));
                     if(solucion.Motivo != P){
+                        Url1="Motivos/";
                         c.Motivo = P;
                     }
                     else{
@@ -134,6 +151,7 @@ public class BackT extends Thread{
                 case 3:
                     P = PCuerpo.get((new Random()).nextInt(6));
                     if(solucion.Parte != P){
+                        Url1="Cuerpo/";
                         c.Parte = P;
                     }
                     else{
@@ -143,6 +161,7 @@ public class BackT extends Thread{
                 case 4:
                     P = Lugares.get((new Random()).nextInt(9));
                     if(solucion.Lugar != P){
+                        Url1="Lugares/";
                         c.Lugar = P;
                     }
                     else{
@@ -153,29 +172,48 @@ public class BackT extends Thread{
             switch (s) {
                 case 0:
                     S = Sospechosos.get((new Random()).nextInt(7));
+                    Url2="Sospechosos/";
                     c.Sospechoso = S;
                     break;
                 case 1:
                     S = Armas.get((new Random()).nextInt(8));
+                    Url2="Armas/";
                     c.Arma = S;
                     break;
                 case 2:
                     S = Motivos.get((new Random()).nextInt(6));
+                    Url2="Motivos/";
                     c.Motivo = S;
                     break;
                 case 3:
                     S = PCuerpo.get((new Random()).nextInt(6));
+                    Url2="Cuerpo/";
                     c.Parte = S;
                     break;
                 case 4:
                     S = Lugares.get((new Random()).nextInt(9));
+                    Url2="Lugares/";
                     c.Lugar = S;
                     break;
             }
             if(P!=null && s!=p){
                 Restrictions.add(c);
+                rest1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/"+Url1+P.Url))); // NOI18N
+                individualPanel.add(rest1);
+                individualPanel.setBackground(new java.awt.Color(0, 51, 0));
+                individualPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 3, new java.awt.Color(240, 240, 240)));
+                individualPanel.setOpaque(false);
+                individualPanel.setLayout(new javax.swing.BoxLayout(individualPanel, javax.swing.BoxLayout.LINE_AXIS));
+
+                rest2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/"+Url2+S.Url))); // NOI18N
+                individualPanel.add(rest2);
+                this.restrictionPanel.add(individualPanel);
+                
+                
                 i--;
             }
+            
+
         }
         return Restrictions;
     }

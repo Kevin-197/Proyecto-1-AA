@@ -73,9 +73,6 @@ public class clientWindow extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         menuBackground = new javax.swing.JLabel();
         MainPanel2 = new javax.swing.JPanel();
-        goBrute = new javax.swing.JButton();
-        goBrute1 = new javax.swing.JButton();
-        respuestaTogglle = new javax.swing.JLabel();
         confidentialPanel = new javax.swing.JPanel();
         solutionPanel = new javax.swing.JPanel();
         solutionSuspect = new javax.swing.JLabel();
@@ -84,6 +81,23 @@ public class clientWindow extends javax.swing.JFrame {
         solutionBody = new javax.swing.JLabel();
         solutionRoom = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        restrictionPanel = new javax.swing.JPanel();
+        scrollRestrictions = new javax.swing.JScrollPane();
+        insideScrollPanel = new javax.swing.JPanel();
+        individualPanel = new javax.swing.JPanel();
+        restrictionToggle1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        restrictionNum = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        runLabel = new javax.swing.JLabel();
+        restrictionToggle = new javax.swing.JLabel();
+        respuestaTogglle = new javax.swing.JLabel();
+        runtimeBT = new javax.swing.JLabel();
+        runtimeFB = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         backTGuessingPanel = new javax.swing.JPanel();
         backTSuspect = new javax.swing.JLabel();
         backTWeapon = new javax.swing.JLabel();
@@ -146,43 +160,6 @@ public class clientWindow extends javax.swing.JFrame {
         MainPanel2.setPreferredSize(new java.awt.Dimension(1500, 920));
         MainPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        goBrute.setText("go");
-        goBrute.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                goBruteMouseReleased(evt);
-            }
-        });
-        goBrute.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBruteActionPerformed(evt);
-            }
-        });
-        MainPanel2.add(goBrute, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, -1));
-
-        goBrute1.setText("back");
-        goBrute1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                goBrute1MouseReleased(evt);
-            }
-        });
-        goBrute1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBrute1ActionPerformed(evt);
-            }
-        });
-        MainPanel2.add(goBrute1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
-
-        respuestaTogglle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/solution.png"))); // NOI18N
-        respuestaTogglle.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                respuestaTogglleMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                respuestaTogglleMouseExited(evt);
-            }
-        });
-        MainPanel2.add(respuestaTogglle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 10, 123, 80));
-
         confidentialPanel.setBackground(new java.awt.Color(189, 150, 63));
         confidentialPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(155, 107, 50)));
         confidentialPanel.setForeground(new java.awt.Color(204, 153, 0));
@@ -216,6 +193,104 @@ public class clientWindow extends javax.swing.JFrame {
         confidentialPanel.setVisible(false);
 
         MainPanel2.add(confidentialPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 980, 450));
+
+        restrictionPanel.setBackground(new java.awt.Color(51, 0, 0));
+        restrictionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        insideScrollPanel.setBackground(new java.awt.Color(102, 0, 0));
+        insideScrollPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(240, 240, 240), 4, true));
+        insideScrollPanel.setLayout(new javax.swing.BoxLayout(insideScrollPanel, javax.swing.BoxLayout.LINE_AXIS));
+
+        individualPanel.setBackground(new java.awt.Color(0, 51, 0));
+        individualPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 3, new java.awt.Color(240, 240, 240)));
+        individualPanel.setOpaque(false);
+        individualPanel.setLayout(new javax.swing.BoxLayout(individualPanel, javax.swing.BoxLayout.LINE_AXIS));
+        insideScrollPanel.add(individualPanel);
+
+        scrollRestrictions.setViewportView(insideScrollPanel);
+
+        restrictionPanel.add(scrollRestrictions, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 820, 270));
+
+        restrictionToggle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backRestriction.png"))); // NOI18N
+        restrictionToggle1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restrictionToggle1MouseClicked(evt);
+            }
+        });
+        restrictionPanel.add(restrictionToggle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel5.setText("Restricciones");
+        restrictionPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 220, 60));
+
+        MainPanel2.add(restrictionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 900, 470));
+        restrictionPanel.setVisible(false);
+
+        restrictionNum.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        restrictionNum.setForeground(new java.awt.Color(240, 240, 240));
+        MainPanel2.add(restrictionNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 600, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel8.setText("N° de restricciones: ");
+        MainPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 600, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel7.setText("Backtracking");
+        MainPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel6.setText("Fuerza Bruta");
+        MainPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+
+        runLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/run.png"))); // NOI18N
+        runLabel.setText("jLabel6");
+        runLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                runLabelMousePressed(evt);
+            }
+        });
+        MainPanel2.add(runLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, 60, 60));
+
+        restrictionToggle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/restriction.png"))); // NOI18N
+        restrictionToggle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restrictionToggleMouseClicked(evt);
+            }
+        });
+        MainPanel2.add(restrictionToggle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, 80, 80));
+
+        respuestaTogglle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/solution.png"))); // NOI18N
+        respuestaTogglle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                respuestaTogglleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                respuestaTogglleMouseExited(evt);
+            }
+        });
+        MainPanel2.add(respuestaTogglle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 10, 123, 80));
+
+        runtimeBT.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        runtimeBT.setForeground(new java.awt.Color(240, 240, 240));
+        MainPanel2.add(runtimeBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 530, -1, -1));
+
+        runtimeFB.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        runtimeFB.setForeground(new java.awt.Color(240, 240, 240));
+        MainPanel2.add(runtimeFB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 180, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel3.setText("Tiempo de ejecución:");
+        MainPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 530, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel4.setText("Tiempo de ejecución:");
+        MainPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 180, -1, -1));
 
         backTGuessingPanel.setBackground(new java.awt.Color(0, 51, 0));
         backTGuessingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 0), 3));
@@ -279,13 +354,13 @@ public class clientWindow extends javax.swing.JFrame {
         this.PropuestaFb = new Combinacion(Sospechosos.get(0),Armas.get(0),Motivos.get(0), PCuerpo.get(0), Lugares.get(0));
         this.PropuestaBt = new Combinacion(Sospechosos.get(0),Armas.get(0),Motivos.get(0), PCuerpo.get(0), Lugares.get(0));
         ArrayList<javax.swing.JLabel> BruteArray = new ArrayList<javax.swing.JLabel>();
-        BruteArray.addAll(Arrays.asList(this.bruteSuspect, this.bruteWeapon, this.bruteMotive, this.bruteBody, this.bruteRoom));
+        BruteArray.addAll(Arrays.asList(this.bruteSuspect, this.bruteWeapon, this.bruteMotive, this.bruteBody, this.bruteRoom, this.runtimeFB));
         ArrayList<javax.swing.JLabel> BackTArray = new ArrayList<javax.swing.JLabel>();
-        BackTArray.addAll(Arrays.asList(this.backTSuspect, this.backTWeapon, this.backTMotive, this.backTBody, this.backTRoom));
-        
+        BackTArray.addAll(Arrays.asList(this.backTSuspect, this.backTWeapon, this.backTMotive, this.backTBody, this.backTRoom, this.runtimeBT));
+        this.restrictionNum.setText(""+Integer.parseInt(this.numberVariables.getText()));
         
         this.brute = new FBruta(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BruteArray, this.PropuestaFb, this.Solution);
-        this.backtrack = new BackT(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BackTArray, this.PropuestaBt, this.Solution, Integer. parseInt(this.numberVariables.getText()));
+        this.backtrack = new BackT(Sospechosos, Armas, Motivos, PCuerpo, Lugares, BackTArray, this.PropuestaBt, this.Solution, Integer.parseInt(this.numberVariables.getText()), this.insideScrollPanel);
 
         
     }//GEN-LAST:event_startButtonActionPerformed
@@ -304,29 +379,21 @@ public class clientWindow extends javax.swing.JFrame {
         this.confidentialPanel.setVisible(false);
     }//GEN-LAST:event_respuestaTogglleMouseExited
 
-    private void goBruteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBruteActionPerformed
+    private void restrictionToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restrictionToggleMouseClicked
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_goBruteActionPerformed
+        this.restrictionPanel.setVisible(true);
+    }//GEN-LAST:event_restrictionToggleMouseClicked
 
-    private void goBruteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBruteMouseReleased
+    private void restrictionToggle1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restrictionToggle1MouseClicked
+        // TODO add your handling code here:
+        this.restrictionPanel.setVisible(false);
+    }//GEN-LAST:event_restrictionToggle1MouseClicked
+
+    private void runLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_runLabelMousePressed
         // TODO add your handling code here:
         this.brute.start();
         this.backtrack.start();
-        
-        //this.BackTracking.excecute(this.Propuesta, this.Solution);
-    }//GEN-LAST:event_goBruteMouseReleased
-
-    private void goBrute1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBrute1MouseReleased
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_goBrute1MouseReleased
-
-    private void goBrute1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBrute1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_goBrute1ActionPerformed
+    }//GEN-LAST:event_runLabelMousePressed
 
     /**
      * @param args the command line arguments
@@ -382,13 +449,27 @@ public class clientWindow extends javax.swing.JFrame {
     private javax.swing.JPanel card_panel;
     private javax.swing.JPanel confidentialPanel;
     private javax.swing.JLabel gameBackground;
-    private javax.swing.JButton goBrute;
-    private javax.swing.JButton goBrute1;
+    private javax.swing.JPanel individualPanel;
+    private javax.swing.JPanel insideScrollPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel menuBackground;
     private javax.swing.JTextField numberVariables;
     private javax.swing.JLabel respuestaTogglle;
+    private javax.swing.JLabel restrictionNum;
+    private javax.swing.JPanel restrictionPanel;
+    private javax.swing.JLabel restrictionToggle;
+    private javax.swing.JLabel restrictionToggle1;
+    private javax.swing.JLabel runLabel;
+    private javax.swing.JLabel runtimeBT;
+    private javax.swing.JLabel runtimeFB;
+    private javax.swing.JScrollPane scrollRestrictions;
     private javax.swing.JLabel solutionBody;
     private javax.swing.JLabel solutionMotive;
     private javax.swing.JPanel solutionPanel;

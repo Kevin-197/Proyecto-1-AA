@@ -41,6 +41,9 @@ public class FBruta extends Thread{
         this.excecute();
         long fbF = System.currentTimeMillis();
         
+        
+        this.Displays.get(5).setText(" "+(fbF - fbS)+" milisegundos");
+        
         System.out.println("Fuerza Bruta: ");
         System.out.println("Tiempo: "+(fbF - fbS)+"\n");
         interrupt();
