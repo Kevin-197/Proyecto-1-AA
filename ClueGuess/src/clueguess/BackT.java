@@ -56,7 +56,7 @@ public class BackT extends Thread{
     }
     public boolean excecute(Combinacion propuesta, Combinacion Solucion, int i, int j, int k, int l, int m, ArrayList<Combinacion> Restrictions){
         
-//        System.out.println(i+" "+j+" "+k+" "+l+" "+m);
+            //System.out.println(i+" "+j+" "+k+" "+l+" "+m);
         if(!Descartadas.contains(Sospechosos.get(i)) && !Descartadas.contains(Armas.get(j)) && !Descartadas.contains(Motivos.get(k)) && !Descartadas.contains(PCuerpo.get(l)) && !Descartadas.contains(Lugares.get(m))){
             propuesta.setSospechoso(Sospechosos.get(i));
             propuesta.setArma(Armas.get(j));

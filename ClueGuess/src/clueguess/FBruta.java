@@ -84,4 +84,26 @@ public class FBruta extends Thread{
         return true;
     }
     
+//    for (int i = 0; i < Sospechosos.size() && incorrecta != null; i++ ) {
+//            propuesta.setSospechoso(Sospechosos.get(i));
+//            for (int j = 0; j < Armas.size() && incorrecta != null; j++) {
+//                propuesta.setArma(Armas.get(j));
+//                for (int k = 0; k < Motivos.size() && incorrecta != null; k++) {
+//                    propuesta.setMotivo(Motivos.get(k));
+//                    for (int l = 0; l < PCuerpo.size() && incorrecta != null; l++) {
+//                        propuesta.setParte(PCuerpo.get(l));
+//                        for (int m = 0; m < Lugares.size(); m++) {
+//                            propuesta.setLugar(Lugares.get(m));
+//                            incorrecta = Solucion.verificar(propuesta, this.Displays);
+//                            if(incorrecta == null){
+//                                break;
+//                            }else{
+//                                this.Descartadas.add(incorrecta);
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+    
 }
