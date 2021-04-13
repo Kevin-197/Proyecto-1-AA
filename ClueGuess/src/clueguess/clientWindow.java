@@ -354,6 +354,9 @@ public class clientWindow extends javax.swing.JFrame {
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
         CardLayout escenarios = (CardLayout)card_panel.getLayout();
+        this.insideScrollPanel.removeAll();
+        this.insideScrollPanel.revalidate();
+        this.insideScrollPanel.repaint();
         escenarios.show(card_panel,"algorithm" );
         Random ran = new Random();
         this.Solution = new Combinacion(Sospechosos.get(ran.nextInt(Sospechosos.size())),Armas.get(ran.nextInt(Armas.size())),Motivos.get(ran.nextInt(Motivos.size())), PCuerpo.get(ran.nextInt(PCuerpo.size())), Lugares.get(ran.nextInt(Lugares.size())));
